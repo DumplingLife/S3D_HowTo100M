@@ -3,6 +3,7 @@ from s3dg import S3D
 import cv2
 import numpy as np
 import argparse
+from tqdm import tqdm
 
 # load video
 parser = argparse.ArgumentParser()
@@ -15,10 +16,8 @@ NUM_FRAMES = int(args.num_frames)
 
 cap = cv2.VideoCapture(VIDEO_PATH)
 frames = []
-while True:
+for i in tqdm(range(NUM_FRAMES)):
     ret, frame = cap.read()
-    if not ret or len(frames) == NUM_FRAMES:
-        break
     frame = cv2.resize(frame, (224, 224))
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     frame = frame / 255.0
