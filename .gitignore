@@ -2,3 +2,4 @@ s3d_dict.npy
 s3d_howto100m.pth
 /videos
 .DS_Store
+__pycache__
