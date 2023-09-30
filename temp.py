@@ -30,7 +30,7 @@ cap.release()
 
 video = np.array(frames)
 video = np.transpose(video, (3, 0, 1, 2))
-video = np.expand_dims(video, axis=0)
+video = video.reshape((-1, 3, 32, 224, 224))
 video = torch.from_numpy(video).float()
 
 print(video.shape)
