@@ -38,7 +38,7 @@ net = S3D('s3d_dict.npy', 512)
 net.load_state_dict(torch.load('s3d_howto100m.pth'))
 
 net = net.eval()
-BATCH_SIZE = 4
+BATCH_SIZE = 1
 
 outputs = []
 for i in tqdm(range(0, video.size(0), BATCH_SIZE)):
