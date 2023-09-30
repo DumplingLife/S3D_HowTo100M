@@ -41,7 +41,7 @@ net = net.eval()
 BATCH_SIZE = 4
 
 outputs = []
-for i in range(0, video.size(0), BATCH_SIZE):
+for i in tqdm(range(0, video.size(0), BATCH_SIZE)):
     video_chunk = video[i:i+BATCH_SIZE]
     output_chunk = net(video_chunk)
     outputs.append(output_chunk["video_embedding"])
