@@ -11,8 +11,7 @@ parser.add_argument("--num_frames", required=True)
 args = parser.parse_args()
 
 VIDEO_PATH = args.video_path
-NUM_FRAMES = args.num_frames
-
+NUM_FRAMES = int(args.num_frames)
 
 cap = cv2.VideoCapture(VIDEO_PATH)
 frames = []
