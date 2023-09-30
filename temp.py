@@ -7,10 +7,11 @@ import argparse
 # load video
 parser = argparse.ArgumentParser()
 parser.add_argument("--video_path", required=True)
+parser.add_argument("--num_frames", required=True)
 args = parser.parse_args()
 
 VIDEO_PATH = args.video_path
-NUM_FRAMES = 32
+NUM_FRAMES = args.num_frames
 
 
 cap = cv2.VideoCapture(VIDEO_PATH)
