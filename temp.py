@@ -9,15 +9,17 @@ from tqdm import tqdm
 parser = argparse.ArgumentParser()
 parser.add_argument("--video_path", required=True)
 parser.add_argument("--num_frames", required=True, type=int)
+parser.add_argument("--output_path", required=True, default="features/output.npy")
 args = parser.parse_args()
 
 VIDEO_PATH = args.video_path
 NUM_FRAMES = args.num_frames
+OUTPUT_PATH = args.output_path
 
 if NUM_FRAMES % 32 != 0:
     raise ValueError("NUM_FRAMES must be a multiple of 32!")
 
-net = S3D('s3d_dict.npy', 512)
+net = S3D('s3d_dict.npy', 1024)
 net.load_state_dict(torch.load('s3d_howto100m.pth'))
 net = net.eval()
 
@@ -43,3 +45,5 @@ cap.release()
 
 video_output_embedding = torch.cat(outputs, dim=0)
 print(video_output_embedding.shape)
+
+np.save(OUTPUT_PATH, video_output_embedding.cpu().numpy())
