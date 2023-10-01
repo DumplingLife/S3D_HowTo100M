@@ -19,7 +19,7 @@ OUTPUT_PATH = args.output_path
 if NUM_FRAMES % 32 != 0:
     raise ValueError("NUM_FRAMES must be a multiple of 32!")
 
-net = S3D('s3d_dict.npy', 1024)
+net = S3D('s3d_dict.npy', 512)
 net.load_state_dict(torch.load('s3d_howto100m.pth'))
 net = net.eval()
 
