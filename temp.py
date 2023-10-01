@@ -9,7 +9,7 @@ from tqdm import tqdm
 parser = argparse.ArgumentParser()
 parser.add_argument("--video_path", required=True)
 parser.add_argument("--num_frames", required=True, type=int)
-parser.add_argument("--output_path", required=True, default="features/output.npy")
+parser.add_argument("--output_path", default="features/output.npy")
 args = parser.parse_args()
 
 VIDEO_PATH = args.video_path
