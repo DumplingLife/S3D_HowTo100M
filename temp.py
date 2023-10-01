@@ -43,7 +43,8 @@ BATCH_SIZE = 1
 outputs = []
 for i in tqdm(range(0, video.size(0), BATCH_SIZE)):
     video_chunk = video[i:i+BATCH_SIZE]
-    output_chunk = net(video_chunk)
+    with torch.no_grad():
+        output_chunk = net(video_chunk)
     outputs.append(output_chunk["video_embedding"])
 video_output_embedding = torch.cat(outputs, dim=0)
 print(video_output_embedding.shape)
